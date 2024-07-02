@@ -1,36 +1,27 @@
 package model;
 
-
+// Class representing a Chips product
 public class Chips extends Product {
-    private String type; // Additional attribute specific to Chips
+    private String flavor; // Flavor of the chips (e.g., Salted, BBQ)
 
-    // Constructor to initialize Chips with its specific attributes
-    public Chips(int id, double price, String productName, String type, int quantity) {
+    // Constructor to initialize the chips product
+    public Chips(int id, double price, String productName, String flavor, int quantity) {
         setId(id);
         setPrice(price);
         setProductName(productName);
-        this.type = type;
         setQuantity(quantity);
+        this.flavor = flavor;
     }
 
-    // Getter and Setter for type
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    // Implementation of the abstract method examine()
+    // Implementation of the abstract examine method
     @Override
     public String examine() {
-        return "Chips: " + getProductName() + ", Type: " + type + ", Price: " + getPrice() + ", Quantity: " + getQuantity();
+        return "Chips: " + getProductName() + " (" + flavor + "), Price: " + getPrice() + ", Quantity: " + getQuantity();
     }
 
-    // Implementation of the abstract method use()
+    // Implementation of the abstract use method
     @Override
     public String use() {
-        return "Enjoy your " + getType() + " chips!";
+        return "Enjoy your " + getProductName() + "!";
     }
 }

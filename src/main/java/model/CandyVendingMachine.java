@@ -3,7 +3,7 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
-
+// Class representing a candy vending machine that implements the VendingMachine interface
 public class CandyVendingMachine implements VendingMachine {
     private int depositPool = 0;           // Holds the current deposited money
     private Map<Integer, Product> products = new HashMap<>(); // Holds the available products
@@ -18,6 +18,7 @@ public class CandyVendingMachine implements VendingMachine {
     // Method to add currency to the vending machine
     @Override
     public void addCurrency(int amount) {
+        // Check if the amount is valid
         if (amount == 1 || amount == 2 || amount == 5 || amount == 10 || amount == 20 ||
                 amount == 50 || amount == 100 || amount == 200 || amount == 500 || amount == 1000) {
             depositPool += amount;
@@ -30,6 +31,7 @@ public class CandyVendingMachine implements VendingMachine {
     @Override
     public Product request(int productId) {
         Product product = products.get(productId);
+        // Check if the product exists, if there's enough balance and if it's in stock
         if (product != null && depositPool >= product.getPrice() && product.getQuantity() > 0) {
             depositPool -= product.getPrice();
             product.setQuantity(product.getQuantity() - 1);
@@ -62,6 +64,7 @@ public class CandyVendingMachine implements VendingMachine {
     // Method to get a list of products
     @Override
     public String[] getProducts() {
+        // Stream through products and get their descriptions
         return products.values().stream()
                 .map(product -> product.getId() + ", " + product.getProductName() + ", " + product.getPrice() + ", Quantity: " + product.getQuantity())
                 .toArray(String[]::new);

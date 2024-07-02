@@ -1,32 +1,27 @@
 package model;
 
-
+// Class representing a Candy product
 public class Candy extends Product {
-    private String flavor; // Additional attribute specific to Candy
+    private String type; // Type of candy (e.g., Chocolate, Gummy)
 
-    // Constructor to initialize Candy with its specific attributes
-    public Candy(int id, double price, String productName, String flavor, int quantity) {
+    // Constructor to initialize the candy product
+    public Candy(int id, double price, String productName, String type, int quantity) {
         setId(id);
         setPrice(price);
         setProductName(productName);
-        this.flavor = flavor;
         setQuantity(quantity);
+        this.type = type;
     }
 
-    // Getter for flavor
-    public String getFlavor() {
-        return flavor;
-    }
-
-    // Implementation of the abstract method examine()
+    // Implementation of the abstract examine method
     @Override
     public String examine() {
-        return "Candy: " + getProductName() + ", Flavor: " + flavor + ", Price: " + getPrice() + ", Quantity: " + getQuantity();
+        return "Candy: " + getProductName() + " (" + type + "), Price: " + getPrice() + ", Quantity: " + getQuantity();
     }
 
-    // Implementation of the abstract method use()
+    // Implementation of the abstract use method
     @Override
     public String use() {
-        return "Enjoy your " + getFlavor() + " candy!";
+        return "Enjoy your " + getProductName() + "!";
     }
 }

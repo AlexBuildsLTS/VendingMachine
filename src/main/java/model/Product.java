@@ -1,6 +1,6 @@
 package model;
 
-
+// Abstract class representing a generic product in the vending machine
 public abstract class Product {
     private int id;            // Unique identifier for the product
     private double price;      // Price of the product
