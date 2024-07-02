@@ -5,11 +5,12 @@ public class Chips extends Product {
     private String type; // Additional attribute specific to Chips
 
     // Constructor to initialize Chips with its specific attributes
-    public Chips(int id, double price, String productName, String type) {
+    public Chips(int id, double price, String productName, String type, int quantity) {
         setId(id);
         setPrice(price);
         setProductName(productName);
         this.type = type;
+        setQuantity(quantity);
     }
 
     // Getter and Setter for type
@@ -24,7 +25,7 @@ public class Chips extends Product {
     // Implementation of the abstract method examine()
     @Override
     public String examine() {
-        return "Chips: " + getProductName() + ", Type: " + type + ", Price: " + getPrice();
+        return "Chips: " + getProductName() + ", Type: " + type + ", Price: " + getPrice() + ", Quantity: " + getQuantity();
     }
 
     // Implementation of the abstract method use()

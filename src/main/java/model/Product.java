@@ -1,4 +1,4 @@
-
+// File: src/main/java/se/model/Product.java
 package model;
 
 
@@ -6,8 +6,9 @@ public abstract class Product {
     private int id;            // Unique identifier for the product
     private double price;      // Price of the product
     private String productName;// Name of the product
+    private int quantity;      // Quantity of the product
 
-    // Getters and Setters for id, price, and productName
+    // Getters and Setters for id, price, productName, and quantity
     public int getId() {
         return id;
     }
@@ -30,6 +31,14 @@ public abstract class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     // Abstract methods to be implemented by subclasses

@@ -1,15 +1,17 @@
 
 package model;
 
+
 public class Candy extends Product {
     private String flavor; // Additional attribute specific to Candy
 
     // Constructor to initialize Candy with its specific attributes
-    public Candy(int id, double price, String productName, String flavor) {
+    public Candy(int id, double price, String productName, String flavor, int quantity) {
         setId(id);
         setPrice(price);
         setProductName(productName);
         this.flavor = flavor;
+        setQuantity(quantity);
     }
 
     // Getter and Setter for flavor
@@ -24,7 +26,7 @@ public class Candy extends Product {
     // Implementation of the abstract method examine()
     @Override
     public String examine() {
-        return "Candy: " + getProductName() + ", Flavor: " + flavor + ", Price: " + getPrice();
+        return "Candy: " + getProductName() + ", Flavor: " + flavor + ", Price: " + getPrice() + ", Quantity: " + getQuantity();
     }
 
     // Implementation of the abstract method use()
