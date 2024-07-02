@@ -1,6 +1,5 @@
-// File: src/main/java/se/model/Drinks.java
-package model;
 
+package model;
 
 
 public class Drinks extends Product {
@@ -15,13 +14,9 @@ public class Drinks extends Product {
         setQuantity(quantity);
     }
 
-    // Getter and Setter for size
+    // Getter for size
     public String getSize() {
         return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 
     // Implementation of the abstract method examine()

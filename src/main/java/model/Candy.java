@@ -14,13 +14,9 @@ public class Candy extends Product {
         setQuantity(quantity);
     }
 
-    // Getter and Setter for flavor
+    // Getter for flavor
     public String getFlavor() {
         return flavor;
-    }
-
-    public void setFlavor(String flavor) {
-        this.flavor = flavor;
     }
 
     // Implementation of the abstract method examine()
