@@ -1,4 +1,3 @@
-// File: src/main/java/se/model/App.java
 package model;
 
 // App class to test the functionality

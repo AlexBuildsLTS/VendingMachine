@@ -1,4 +1,3 @@
-// File: src/main/java/se/model/Product.java
 package model;
 
 

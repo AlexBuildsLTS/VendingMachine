@@ -1,4 +1,3 @@
-// File: src/main/java/se/model/VendingMachine.java
 package model;
 
 import model.Product;
