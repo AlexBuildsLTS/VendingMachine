@@ -1,4 +1,6 @@
-package model;
+package se.alex.lexicon;
+
+import se.alex.lexicon.model.Product;
 
 // Interface defining the operations of a vending machine
 public interface VendingMachine {
@@ -9,3 +11,6 @@ public interface VendingMachine {
     int getBalance();                     // Method to get current balance
     String[] getProducts();               // Method to get list of products
 }
+
+
+
