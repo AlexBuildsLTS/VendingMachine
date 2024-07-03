@@ -4,53 +4,72 @@ import se.alex.lexicon.model.Product;
 import se.alex.lexicon.model.Candy;
 import se.alex.lexicon.model.Chips;
 import se.alex.lexicon.model.Drinks;
+import se.alex.lexicon.model.VendingMachine;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CandyVendingMachine implements VendingMachine {
-    private int depositPool = 0;
+    private int balance;
     private List<Product> products;
 
     public CandyVendingMachine() {
-        products = new ArrayList<>();
-        products.add(new Candy(1, "Snickers", 10, "Chocolate"));
-        products.add(new Chips(2, "Lays", 15, "Salted"));
-        products.add(new Chips(3, "Pringles", 20, "Sour Cream"));
-        products.add(new Drinks(4, "Coke", 20, 330));
-        products.add(new Drinks(5, "Sprite", 18, 330));
+        this.balance = 0;
+        this.products = new ArrayList<>();
+        products.add(new Candy(1, "Snickers", 10.0, "Chocolate"));
+        products.add(new Chips(2, "Lays", 15.0, "Salted"));
+        products.add(new Chips(3, "Pringles", 20.0, "Sour Cream"));
+        products.add(new Candy(4, "Gummy Bears", 25.0, "Mixed Fruit"));
+        products.add(new Candy(5, "Lollipop", 18.0, "Strawberry"));
+        products.add(new Drinks(6, "Sprite", 15.0, 330));
+        products.add(new Drinks(7, "Coca-Cola", 15.0, 330));
+        products.add(new Drinks(8, "Fanta", 15.0, 330));
     }
 
     @Override
     public void addCurrency(int amount) {
-        if (amount == 1 || amount == 2 || amount == 5 || amount == 10 || amount == 20 || amount == 50 ||
-                amount == 100 || amount == 200 || amount == 500 || amount == 1000) {
-            depositPool += amount;
-        } else {
-            throw new IllegalArgumentException("Invalid currency amount");
+        int[] validAmounts = {1, 2, 5, 10, 20, 50, 100, 200, 500, 1000};
+        boolean isValid = false;
+        for (int validAmount : validAmounts) {
+            if (amount == validAmount) {
+                isValid = true;
+                break;
+            }
         }
+        if (isValid) {
+            this.balance += amount;
+        } else {
+            System.out.println("Invalid amount. Please add a valid currency value.");
+        }
+    }
+
+    @Override
+    public int getBalance() {
+        return balance;
     }
 
     @Override
     public Product request(int productId) {
         for (Product product : products) {
             if (product.getId() == productId) {
-                if (depositPool >= product.getPrice()) {
-                    depositPool -= product.getPrice();
+                if (balance >= product.getPrice()) {
+                    balance -= product.getPrice();
                     return product;
                 } else {
-                    throw new IllegalArgumentException("Insufficient funds");
+                    System.out.println("Insufficient balance.");
+                    return null;
                 }
             }
         }
-        throw new IllegalArgumentException("Product not found");
+        System.out.println("Product not found.");
+        return null;
     }
 
     @Override
     public int endSession() {
-        int moneyToReturn = depositPool;
-        depositPool = 0;
-        return moneyToReturn;
+        int refund = balance;
+        balance = 0;
+        return refund;
     }
 
     @Override
@@ -60,12 +79,7 @@ public class CandyVendingMachine implements VendingMachine {
                 return product.getDescription();
             }
         }
-        return "Product not found";
-    }
-
-    @Override
-    public int getBalance() {
-        return depositPool;
+        return "Product not found.";
     }
 
     @Override
@@ -73,7 +87,7 @@ public class CandyVendingMachine implements VendingMachine {
         String[] productDescriptions = new String[products.size()];
         for (int i = 0; i < products.size(); i++) {
             Product product = products.get(i);
-            productDescriptions[i] = product.getId() + ": " + product.getName() + " - " + product.getPrice() + " SEK";
+            productDescriptions[i] = "ID: " + product.getId() + ", Name: " + product.getName() + ", Price: " + product.getPrice();
         }
         return productDescriptions;
     }

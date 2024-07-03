@@ -1,19 +1,35 @@
 package se.alex.lexicon.model;
 
-public class Candy extends Product {
+public class Candy implements Product {
+    private int id;
+    private String name;
+    private double price;
     private String flavor;
 
     public Candy(int id, String name, double price, String flavor) {
-        super(id, name, price);
+        this.id = id;
+        this.name = name;
+        this.price = price;
         this.flavor = flavor;
     }
 
-    public String getFlavor() {
-        return flavor;
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
     }
 
     @Override
     public String getDescription() {
-        return getName() + " is a candy with " + flavor + " flavor.";
+        return name + " is a candy with " + flavor + " flavor.";
     }
 }
