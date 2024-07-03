@@ -12,8 +12,17 @@ public class Candy extends Product {
         return flavor;
     }
 
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
     @Override
-    public String getDescription() {
-        return getName() + " is a candy with " + flavor + " flavor.";
+    public String examine() {
+        return "Candy [ID=" + getId() + ", Name=" + getName() + ", Price=" + getPrice() + ", Flavor=" + flavor + "]";
+    }
+
+    @Override
+    public String use() {
+        return "You are eating the " + getName() + " candy with " + flavor + " flavor.";
     }
 }
