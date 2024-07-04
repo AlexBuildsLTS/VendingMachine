@@ -1,10 +1,12 @@
-package se.alex.lexicon.model;
+package se.alex.lexicon.data;
+
+import se.alex.lexicon.model.Product;
 
 public interface VendingMachine {
     void addCurrency(int amount);
-    Product request(int productId);
+    Product request(int id);
     int endSession();
-    String getDescription(int productId);
+    String getDescription(int id);
     int getBalance();
     String[] getProducts();
 }

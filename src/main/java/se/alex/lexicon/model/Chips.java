@@ -6,8 +6,8 @@ public class Chips implements Product {
     private double price;
     private String type;
 
-    public Chips(int id, String name, double price, String type) {
-        this.id = id;
+    public Chips(String name, double price, String type) {
+        this.id = ProductSequencer.nextId();
         this.name = name;
         this.price = price;
         this.type = type;
@@ -31,5 +31,10 @@ public class Chips implements Product {
     @Override
     public String getDescription() {
         return name + " are " + type + " chips.";
+    }
+
+    @Override
+    public String use() {
+        return "Enjoy your chips " + name + ".";
     }
 }

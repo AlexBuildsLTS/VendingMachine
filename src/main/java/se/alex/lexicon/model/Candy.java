@@ -6,8 +6,8 @@ public class Candy implements Product {
     private double price;
     private String flavor;
 
-    public Candy(int id, String name, double price, String flavor) {
-        this.id = id;
+    public Candy(String name, double price, String flavor) {
+        this.id = ProductSequencer.nextId();
         this.name = name;
         this.price = price;
         this.flavor = flavor;
@@ -30,6 +30,11 @@ public class Candy implements Product {
 
     @Override
     public String getDescription() {
-        return name + " is a candy with " + flavor + " flavor.";
+        return name + " Enjoy your " + flavor + " flavor.";
+    }
+
+    @Override
+    public String use() {
+        return "Enjoy your  " + name + ".";
     }
 }

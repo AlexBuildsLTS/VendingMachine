@@ -6,8 +6,8 @@ public class Drinks implements Product {
     private double price;
     private int volume;
 
-    public Drinks(int id, String name, double price, int volume) {
-        this.id = id;
+    public Drinks(String name, double price, int volume) {
+        this.id = ProductSequencer.nextId();
         this.name = name;
         this.price = price;
         this.volume = volume;
@@ -31,5 +31,10 @@ public class Drinks implements Product {
     @Override
     public String getDescription() {
         return name + " is a drink with " + volume + "ml.";
+    }
+
+    @Override
+    public String use() {
+        return "Enjoy your ice cold drink " + name + ".";
     }
 }
