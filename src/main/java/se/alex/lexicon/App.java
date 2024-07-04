@@ -20,7 +20,7 @@ public class App {
 
         displayProducts(vendingMachine);
 
-        // Product selected
+        // choose a product
         int productId =5;
 
         try {
