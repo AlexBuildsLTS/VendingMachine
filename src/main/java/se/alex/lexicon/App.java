@@ -7,39 +7,56 @@ import se.alex.lexicon.model.Candy;
 import se.alex.lexicon.model.Chips;
 import se.alex.lexicon.model.Drinks;
 
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) {
         Product[] products = createProducts();
 
         VendingMachine vendingMachine = new VendingMachineManager(products);
 
-        // Initialize with 100
-        vendingMachine.addCurrency(100);
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Balance: " + vendingMachine.getBalance());
+        while (true) {
+            // Display balance and products
+            System.out.println("Current balance: " + vendingMachine.getBalance());
+            displayProducts(vendingMachine);
 
-        displayProducts(vendingMachine);
+            // Ask the user to add funds or purchase a product
+            System.out.println("Enter 'a' to add funds, 'p' to purchase a product, or 'q' to quit: ");
+            String action = scanner.next();
 
-        // Selected product
-        int productId = 3;
-
-        try {
-            Product purchased = vendingMachine.request(productId);
-            System.out.println("Purchased: " + purchased.examine());
-
-            // Use the product
-            System.out.println(purchased.use());
-
-            // Update product details (example usage of setName and setPrice)
-            purchased.setName("Diet Coca Cola");
-            purchased.setPrice(35);
-            System.out.println("Updated Product: " + purchased.examine());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            if (action.equalsIgnoreCase("q")) {
+                break;
+            } else if (action.equalsIgnoreCase("a")) {
+                System.out.println("Enter the amount to add (valid denominations: 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000): ");
+                int amount = scanner.nextInt();
+                try {
+                    vendingMachine.addCurrency(amount);
+                    System.out.println("Added " + amount + " to balance.");
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (action.equalsIgnoreCase("p")) {
+                System.out.println("Enter the ID of the product you want to purchase: ");
+                int productId = scanner.nextInt();
+                try {
+                    Product purchased = vendingMachine.request(productId);
+                    System.out.println("Purchased: " + purchased.examine());
+                    System.out.println(purchased.use());
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else {
+                System.out.println("Invalid input. Please try again.");
+            }
         }
 
+        // End session and return change
         int change = vendingMachine.endSession();
-        System.out.println("Change: " + change);
+        System.out.println("Change returned: " + change);
+
+        scanner.close();
     }
 
     private static Product[] createProducts() {
