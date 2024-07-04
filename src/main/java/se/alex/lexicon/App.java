@@ -20,8 +20,8 @@ public class App {
 
         displayProducts(vendingMachine);
 
-        // Automatically select a product to purchase (e.g., product with ID 1)
-        int productId = 1;
+        // Product selected
+        int productId =5;
 
         try {
             Product purchased = vendingMachine.request(productId);
