@@ -20,8 +20,8 @@ public class App {
 
         displayProducts(vendingMachine);
 
-        // choose a product
-        int productId =5;
+        // Select a product : in this case 5
+        int productId = 5;
 
         try {
             Product purchased = vendingMachine.request(productId);
