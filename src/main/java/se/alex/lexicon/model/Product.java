@@ -2,8 +2,8 @@ package se.alex.lexicon.model;
 
 public abstract class Product {
     private final int id;
-    private final String name;
-    private final int price;
+    private String name;
+    private int price;
 
     public Product(int id, String name, int price) {
         this.id = id;
@@ -19,9 +19,19 @@ public abstract class Product {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getPrice() {
         return price;
     }
 
-    public abstract String getDescription();
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public abstract String examine();
+
+    public abstract String use();
 }

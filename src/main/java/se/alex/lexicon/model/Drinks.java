@@ -1,19 +1,28 @@
 package se.alex.lexicon.model;
 
 public class Drinks extends Product {
-    private final String size;
+    private int volume;
 
-    public Drinks(int id, String name, int price, String size) {
+    public Drinks(int id, String name, int price, int volume) {
         super(id, name, price);
-        this.size = size;
+        this.volume = volume;
     }
 
-    public String getSize() {
-        return size;
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 
     @Override
-    public String getDescription() {
-        return "Drink: " + getName() + ", Size: " + size + ", Price: " + getPrice();
+    public String examine() {
+        return "Drink [ID: " + getId() + ", Name: " + getName() + ", Price: " + getPrice() + ", Volume: " + volume + "ml]";
+    }
+
+    @Override
+    public String use() {
+        return "You drink the " + getName() + ".";
     }
 }
