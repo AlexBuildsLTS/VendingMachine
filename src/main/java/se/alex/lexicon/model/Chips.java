@@ -1,9 +1,9 @@
 package se.alex.lexicon.model;
 
 public class Chips extends Product {
-    private String type;
+    private final String type;
 
-    public Chips(int id, String name, double price, String type) {
+    public Chips(int id, String name, int price, String type) {
         super(id, name, price);
         this.type = type;
     }
@@ -14,6 +14,6 @@ public class Chips extends Product {
 
     @Override
     public String getDescription() {
-        return getName() + " are " + type + " chips.";
+        return "Chips: " + getName() + ", Type: " + type + ", Price: " + getPrice();
     }
 }
