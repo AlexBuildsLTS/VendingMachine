@@ -20,20 +20,12 @@ public class App {
 
         displayProducts(vendingMachine);
 
-        // Selected product
-        int productId = 5;
+        // Automatically select a product to purchase (e.g., product with ID 1)
+        int productId = 1;
 
         try {
             Product purchased = vendingMachine.request(productId);
             System.out.println("Purchased: " + purchased.examine());
-
-            // Use the product
-            System.out.println(purchased.use());
-
-            // Update product details (example usage of setName and setPrice)
-            purchased.setName("Diet Coca Cola");
-            purchased.setPrice(35);
-            System.out.println("Updated Product: " + purchased.examine());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
